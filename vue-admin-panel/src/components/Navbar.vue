@@ -8,7 +8,7 @@
             <div>
             <MenuButton class="flex items-center hover:bg-gray-300">
                 <img src="https://randomuser.me/api/portraits/men/85.jpg" class="rounded-full w-8">
-                <small class="text-gray-500 hover:text-white">Sam Smith</small>
+                <small class="text-gray-500 hover:text-white">{{ currentUser.name }}</small>
                 <ChevronDownIcon
                 class="ml-2 -mr-1 h-5 w-5 text-indigo-200 hover:text-indigo-100"
                 aria-hidden="true"
@@ -74,8 +74,11 @@
     import { ChevronDownIcon } from '@heroicons/vue/solid';
     import store from '../store';
     import router from '../router';
+    import { computed } from 'vue';
 
     const emit = defineEmits(['toggle-sidebar']);
+
+    const currentUser = computed(() => store.state.user.data);
 
     function logout(){
         store.dispatch('logout')

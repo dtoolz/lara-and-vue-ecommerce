@@ -19,7 +19,8 @@ axiosClient.interceptors.response.use(response => {
         sessionStorage.removeItem('TOKEN')
         router.push({name: 'login'})
       }
-      console.log(error);
+      //console.log(error);
+      throw error;
 });
 
 export default axiosClient;
